@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh; 
+  }
+  
+  .details-box {
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px; 
+  }
+  
+  .details-box form {
+    margin-top: 20px; 
+  }
+  
+  .details-box form table {
+    width: 100%; 
+  }
+  
+  .details-box form table td {
+    padding: 8px; 
+  }
+  

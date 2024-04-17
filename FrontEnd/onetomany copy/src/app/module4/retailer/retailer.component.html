@@ -1,0 +1,51 @@
+<div class="container">
+  <h2>{{'retailervender' | translate}}</h2>
+  <div class="details-box">
+    <form [formGroup]="retailform" (ngSubmit)="onSubmit()">
+      <table class="table">
+        <tr>
+          <td><input type="hidden" formControlName="id" readonly></td>
+          <td>
+            <mat-form-field>
+              <mat-label >{{ 'type'| translate}}</mat-label>
+              <mat-select  formControlName="type" placeholder="Type">
+                <mat-option *ngFor="let type of types" [value]="type.name">{{type.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label >{{'name'|translate }}</mat-label>
+              <input  matInput formControlName="name" [placeholder]=" 'nameplaceholder' | translate">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label >{{ 'phoneNo' | translate}}</mat-label>
+              <input  matInput formControlName="phoneno" [placeholder]=" 'phonenoplaceholder' |translate">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label >{{ 'address1' |translate}}</mat-label>
+              <input  matInput formControlName="address1" [placeholder]=" 'address1placeholder' | translate ">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label >{{ 'address2' |translate}}</mat-label>
+              <input  matInput formControlName="address2" [placeholder]=" 'address2placeholder' | translate ">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label >{{'adhaarid' | translate }}</mat-label>
+              <input  matInput formControlName="aadhaarId" [placeholder]=" 'adhaaridplaceholder' | translate ">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <button type="submit" mat-raised-button color="primary">{{ 'rvsubmit' | translate}}</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+.mat-label-container {
+    display: flex;
+    align-items: center;
+  }
+  .button-group {
+    margin-top: 10px; 
+}
+.submit{
+  margin-right: 2rem;
+}
+
+.display_flex{
+  display: flex;
+}
+
+.dateInp{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

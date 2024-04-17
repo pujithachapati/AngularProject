@@ -1,0 +1,87 @@
+<div *ngIf="show">
+  <nav class="navbar navbar-expand-im bg-primary navbar-dark">
+    <div class="row">
+      <div class="col-2">
+        <div class="nav-link-container">
+          <a routerLink="dashboard" class="nav-link text-white" [routerLinkActive]="'active'" >
+            <mat-icon>dashboard</mat-icon></a>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="nav-link-container">
+        <a routerLink="productlist/products" class="nav-link text-white" [routerLinkActive]="'active'">
+          <mat-icon>store</mat-icon><span> {{'product' | translate}}</span></a>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="nav-link-container">
+        <a routerLink="createshop/list" class="nav-link text-white" [routerLinkActive]="'active'">
+          <mat-icon>shopping_basket</mat-icon><span> {{'product2' | translate}}</span></a>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="nav-link-container">
+        <a routerLink="createretailer/retailerlist" class="nav-link text-white" [routerLinkActive]="'active'" >
+          <mat-icon>storefront</mat-icon><span> {{'retailer' | translate}}</span></a>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="nav-link-container">
+        <a routerLink="vendor/vendorslist" class="nav-link text-white" routerLinkActive="active" >
+          <mat-icon>assignment_ind</mat-icon><span> {{'vendors' | translate}}</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="search-container">
+      <form [formGroup]="searchForm" class="search-container">
+        <mat-form-field>
+          <mat-label >{{'search' | translate}}</mat-label>
+          <input  matInput formControlName="searchTerm" [placeholder]=" 'searchplaceholder' | translate " [matAutocomplete]="auto" class="search-input">
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onComponentSelected($event)">
+            <mat-option *ngIf="searchform.searchTerm.value && filteredComponents.length === 0">
+              {{'noRecordsFound' | translate}}
+            </mat-option>
+            <mat-option *ngFor="let component of filteredComponents" [value]="component">
+              {{ component.moduleName}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+    <div>
+      <mat-label>Language</mat-label>
+      <mat-select value="en" (selectionChange)="changeLocale($event.value)">
+        <mat-option value="en">English</mat-option>
+        <mat-option value="fr">French</mat-option>
+      </mat-select>
+    </div>
+<div class="notification">
+      <mat-icon (click)="Overlay()" matBadge="{{notificationcount}}" matBadgeColor="warn">notifications</mat-icon>
+      <div class="overlay" *ngIf="showOverlay && productData">
+        <div *ngIf="productData" class="order-details">
+            <div class="header-row">
+                <div class="header-item"> {{'laptopname' | translate}}</div>
+                <div class="header-item" > {{'rate' | translate}}</div>
+                <div class="header-item" > {{'quantity' | translate}}</div>
+                <div class="header-item" > {{'price' | translate}}</div>
+            </div>
+            <hr>
+            <div *ngFor="let order of productData.orders" class="order-row">
+                <div class="order-item" >{{order.customername}}</div>
+                <div class="order-item">{{order.rate}}</div>
+                <div class="order-item">{{order.quantity}}</div>
+                <div class="order-item">{{ order.rate * order.quantity }}</div>
+            </div>
+            <hr>
+            <div class="total-price">
+                <h4>{{'totalprice' | translate}}<b>{{getTotalPrice()}}</b></h4>
+            </div>
+        </div>
+  </div>
+</div>
+<button mat-raised-button  (click)="logout()">
+  <mat-icon>exit_to_app</mat-icon><span>{{'logout' | translate}}</span></button>
+</nav>
+</div>
+<router-outlet></router-outlet>
+

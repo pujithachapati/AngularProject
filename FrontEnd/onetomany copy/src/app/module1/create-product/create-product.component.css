@@ -1,0 +1,21 @@
+.childclass{
+    position: relative;
+    bottom: 18rem;
+    left: 65rem;
+}
+.container-div {
+    position: relative;
+   left:31rem;
+  }
+.addcart{
+    position: relative;
+    left:57rem;
+    top: -24px;
+}
+.cus-button{
+    background-image: linear-gradient(#F3B5B9,#00E);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}

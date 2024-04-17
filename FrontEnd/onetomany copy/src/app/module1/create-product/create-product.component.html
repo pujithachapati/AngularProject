@@ -1,0 +1,79 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <table class="table">
+      <tr>
+        <td><input type="hidden" formControlName="id" readonly></td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label >{{'cproduct' | translate}}</mat-label>
+            <input matInput formControlName="productname" [placeholder]=" 'cproductnameplaceholder' | translate ">
+            <mat-error *ngIf="fc['productname'].errors?.['required']">{{'cproductnameisrequired' | translate}}</mat-error>
+            <mat-error  *ngIf="fc['productname'].errors?.['notAllowed']">{{'cproductnamenotallowedabc' | translate}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label >{{ 'cproducttype' |translate}}</mat-label>
+            <mat-select  matNativeControl formControlName="productusage" (selectionChange)="selectProductType($event.value)">
+              <mat-option disabled></mat-option>
+              <mat-option *ngFor="let type of productType" value={{type.name}}>{{type.name}}</mat-option>
+            </mat-select>
+            <mat-error  *ngIf="fc['productusage'].errors?.['required']">{{'cproducttypeisrequired' | translate}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label >{{'cbranch'| translate}}</mat-label>
+            <mat-select  matNativeControl formControlName="branch">
+              <mat-option disabled></mat-option>
+              <mat-option *ngFor="let branch of Branchnames" [value]="branch.id">{{branch.name}}</mat-option>
+            </mat-select>
+            <mat-error  *ngIf="fc['branch'].errors?.['required']">{{ 'cbranchisrequired' | translate}}</mat-error>
+          </mat-form-field>
+        </td>
+      </tr> 
+    </table>
+    <div formArrayName="orders">
+      <button type="button" mat-raised-button (click)="AddOrder()" color="primary" >{{'addorder' | translate}}</button>
+
+      <table class="table">
+        <div class="addcart">
+          <button type="button"  class="cus-button" (click)="addCart()" >{{'addcart' | translate}}</button>
+        </div>
+        <tr *ngFor="let order of orderForm.controls; let i = index" [formGroupName]="i">
+          <td colspan="2">
+            <div class="form-group row">
+              <div class="container-div">
+              </div>
+              <input type="hidden"formControlName="id">
+              <div class="col-md-2">
+                <mat-label >{{labelName}}</mat-label>
+                <input  matInput type="text" formControlName="customername" placeholder="Name" >
+                <mat-error  *ngIf="order?.get('customername')?.errors?.['required'] && order?.get('customername')?.touched">{{labelName}} is required</mat-error>
+              </div>              
+              <div class="col-md-2">
+                <mat-label >{{'crate' | translate}}</mat-label>
+                <input   matInput type="text" formControlName="rate" [placeholder]=" 'crateplaceholder' | translate ">
+                <mat-error  *ngIf="order?.get('rate')?.errors?.['required'] && order?.get('rate')?.touched">{{'crateisrequired' | translate}}</mat-error>
+              </div>
+              <div class="col-md-2">
+                <mat-label >{{'cquantity'|translate}}</mat-label>
+                <input  matInput type="text" formControlName="quantity" [placeholder]=" 'cquantityplaceholder' | translate ">
+                <mat-error  *ngIf="order?.get('quantity')?.errors?.['required'] && order?.get('quantity')?.touched">{{ 'cquantityisrequired' | translate}}</mat-error>
+              </div>
+              <div class="col-md-2">
+                <button type="button" mat-raised-button (click)="AddAddress(i)" color="primary" >{{'caddaddress' | translate}}</button>
+              </div>
+              <div class="col-md-2">
+                <button type="button" mat-raised-button (click)="removeOrder(i)" color="warn" >{{'cremove' | translate}}</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <button type="submit" mat-raised-button color="primary">{{'submit'| translate}}</button>
+  </form>
+</div>
+
+

@@ -1,0 +1,35 @@
+.column-header {
+    padding: 20px; 
+  }
+  .table-heading {
+    font-size: 14px; 
+  }
+  
+  .column-header {
+    font-weight: bold;
+    font-size: 15px; 
+    background-color: #f0f0f0;
+    color: #333; 
+  }
+  .table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh; 
+  }
+  
+  .mat-elevation-z8 {
+    width: 80%; 
+  }
+  .create{
+    position: relative;
+    left: 71rem;
+    top: 2rem;
+}
+.fixed-table{
+  table-layout: fixed;
+  width: 89%;
+}
+
+ 

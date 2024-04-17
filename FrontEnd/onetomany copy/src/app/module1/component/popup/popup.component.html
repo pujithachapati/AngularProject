@@ -1,0 +1,30 @@
+<div align="end" (click)=close()>
+    <button mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <h1 mat-dialog-title >{{ 'poptitle' | translate}}</h1>
+  <form [formGroup]="addressform">
+    <div>
+      <button (click)="addAddress()" mat-raised-button type="button" color="primary" >{{'popaddrow' | translate}}</button>
+    </div>
+    <div mat-dialog-content>
+      <table formArrayName="addresslist">
+          <tr *ngFor="let address of addresslist.controls; let j = index" [formGroupName]="j">
+              <td><input type="hidden" formControlName="id" readonly></td>
+              <td><mat-label ><b>{{ 'popdoorno' | translate}}</b></mat-label></td>
+              <td><input  matInput type="text" formControlName="doorno" [style.textDecoration]="'underline'" [placeholder]=" 'enterdoorno' | translate"></td>
+              <td><mat-label ><b>{{ 'popstreet' | translate}}</b></mat-label></td>
+              <td><input matInput type="text" formControlName="street" [style.textDecoration]="'underline'" [placeholder]=" 'enterstreet' | translate"></td>
+              <td><button type="button" mat-raised-button (click)="removeAddress(j)" color="warn" >{{'removeaddress' | translate}}</button></td>
+          </tr>
+      </table>
+  </div>
+  
+  </form>
+  <div mat-dialog-actions align="end" >
+    <button mat-raised-button color="primary" style="margin-right: 10px;" (click)="onSubmit()">{{'popsubmit' | translate}}</button>
+    <button mat-raised-button color="warn" (click)="close()">{{'popclose' | translate}}</button>
+  </div>
+  
+  

@@ -1,0 +1,66 @@
+<div class="container">
+    <form [formGroup]="shopForm" (ngSubmit)="onSubmit()">
+      <table class="table">
+        <tr>
+          <td>
+              <input type="hidden" formControlName="id" readonly >
+          </td>
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label >{{ 'cshopid' | translate }}</mat-label>
+              <input  matInput formControlName="shopId" readonly >
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label >{{'cshopname' | translate }}</mat-label>
+              <input  matInput formControlName="shopname" [placeholder]=" 'cshopnameplaceholder' | translate ">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <div formArrayName="branchlist">
+        <button type="button" mat-raised-button (click)="addbranch()" color="primary" >{{ ' addbranch' | translate}}</button>
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let branch of branchForm.controls; let i = index" [formGroupName]="i">
+              <td colspan="2">
+                <div class="form-group row">
+                  <div class="container-div"></div>
+                  <input type="hidden" formControlName="id">
+                  <div class="col-md-2">
+                    <mat-label >{{'branch' | translate }}</mat-label>
+                    <mat-select  class="dateInp" formControlName="branch" [placeholder]=" 'branchplaceholder' | translate " (selectionChange)="selectProduct(i,$event.value)">
+                      <mat-option  disabled>Select Branch</mat-option>
+                      <mat-option *ngFor="let branch of Branchnames" value={{branch.id}}>{{ branch.name }}</mat-option>
+                    </mat-select>
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label >{{ 'shopproduct' | translate}}</mat-label>
+                    <mat-select  formControlName="product" [placeholder]=" 'shopproductplaceholder' | translate " class="dateInp">
+                      <mat-option disabled>Select Product</mat-option>
+                      <mat-option *ngFor="let p of products[i]" [value]="p.id">{{ p.productname }}</mat-option>
+                    </mat-select>
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label >{{ 'shopdeliverydate' | translate }}</mat-label>
+                    <div class="display_flex">
+                      <input  matInput [matDatepicker]="picker" class="dateInp" formControlName="deliverydate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    </div>
+                    
+                  </div>
+                  <div class="col-md-2">
+                    <button type="button" mat-raised-button (click)="removebranch(i)" color="warn" >{{'shopremove' | translate}}</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="submit" mat-raised-button color="primary" >{{ 'shopsubmit' | translate}}</button>
+    </form>
+  </div>
+  

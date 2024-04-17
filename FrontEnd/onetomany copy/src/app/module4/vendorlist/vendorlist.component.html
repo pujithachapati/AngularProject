@@ -1,0 +1,42 @@
+<div class="create">
+    <button mat-raised-button color="primary" (click)="goTo()" >{{'vcreate' | translate }}</button>
+  </div>
+  <div class="table-container">
+    <table mat-table [dataSource]="vendors" class="mat-elevation-z8 fixed-table">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="column-header" > {{ 'vetailername' | translate}} </th>
+        <td mat-cell *matCellDef="let vendor"> {{ vendor.name }} </td>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef class="column-header" >{{ 'vtype' | translate}} </th>
+        <td mat-cell *matCellDef="let vendor"> {{ vendor.type }} </td>
+      </ng-container>
+      <ng-container matColumnDef="phoneno">
+        <th mat-header-cell *matHeaderCellDef class="column-header" > {{'vphonenumber' |translate}}</th>
+        <td mat-cell *matCellDef="let vendor"> {{ vendor.phoneno }} </td>
+      </ng-container>
+      <ng-container matColumnDef="address1">
+        <th mat-header-cell *matHeaderCellDef class="column-header" >{{'vaddressline1' |translate }} </th>
+        <td mat-cell *matCellDef="let vendor"> {{ vendor.address1 }} </td>
+      </ng-container>
+      <ng-container matColumnDef="address2">
+        <th mat-header-cell *matHeaderCellDef class="column-header" > {{'vaddressline2' | translate}} </th>
+        <td mat-cell *matCellDef="let vendor"> {{ vendor.address2 }} </td>
+      </ng-container>
+      <ng-container matColumnDef="aadhaarId">
+        <th mat-header-cell *matHeaderCellDef class="column-header" > {{ 'vadhaarid' | translate}} </th>
+        <td mat-cell *matCellDef="let vendor"> {{ vendor.aadhaarId }} </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="column-header" > {{ 'vactions' | translate}} </th>
+        <td mat-cell *matCellDef="let retail">
+          <button mat-raised-button color="accent" (click)="updatevendor(retail.id)" >{{ 'rvupdate' | translate}}</button>
+          <button mat-raised-button color="warn" (click)="deletevendor(retail.id)" >{{'vdelete' | translate }}</button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+  

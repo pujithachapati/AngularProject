@@ -1,0 +1,76 @@
+.notification{
+    margin-right: 11rem;
+}
+.notification {
+    position: relative;
+    left: 7rem;
+  }
+  
+  .overlay{
+    position: absolute;
+    top: 100%;
+    right: -169px;
+    width: 390px; 
+    height: fit-content; 
+    background-color: white; 
+    border: 1.9px solid black; 
+    z-index: 1; 
+    display: none; 
+  }
+  
+  .notification:hover .overlay {
+    display: block; 
+  }
+  .order-details {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.header-row, .order-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.header-item, .order-item {
+    flex: 1;
+    text-align: center;
+}
+
+.total-price {
+    text-align: right;
+}
+.active {
+  background-color: #1E46D3;
+  padding: 3px; 
+  border-radius: 5px;
+}
+.nav-link {
+  padding: 5px 10px;
+}
+.row {
+  --bs-gutter-x: 2.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1* var(--bs-gutter-y));
+  margin-right: calc(-.5* var(--bs-gutter-x));
+  margin-left: calc(-.5* var(--bs-gutter-x));
+}
+.navbar {
+  --bs-navbar-padding-x: 0;
+  --bs-navbar-padding-y: -0.5rem;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button {
+  margin-right: 8px;
+}
+.search-input{
+  margin-right: 10px;
+}
